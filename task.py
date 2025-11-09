@@ -219,49 +219,48 @@ def birthdays(args, book: AddressBook):
         lines.append(f"{dt}: {names}")
     return "\n".join(lines)
 
-def main():
-    book = load_data()
-    print("Welcome to the assistant bot!")
+book = load_data()
+print("Welcome to the assistant bot!")
 
-    while True:
-        user_input = input("Enter a command: ")
-        command, args = parse_input(user_input)
-        mutating = False
+while True:
+    user_input = input("Enter a command: ")
+    command, args = parse_input(user_input)
+    mutating = False
 
-        if command in ["close", "exit"]:
-            save_data(book)
-            print("Good bye!")
-            break
+    if command in ["close", "exit"]:
+        save_data(book)
+        print("Good bye!")
+        break
 
-        elif command == "hello":
-            print("How can I help you?")
+    elif command == "hello":
+        print("How can I help you?")
 
-        elif command == "add":
-            print(add_contact(args, book))
-            mutating = True
+    elif command == "add":
+        print(add_contact(args, book))
+        mutating = True
 
-        elif command == "change":
-            print(change_contact(args, book))
-            mutating = True
+    elif command == "change":
+        print(change_contact(args, book))
+        mutating = True
 
-        elif command == "phone":
-            print(show_phones(args, book))
+    elif command == "phone":
+        print(show_phones(args, book))
 
-        elif command == "all":
-            print(show_all(args, book))
+    elif command == "all":
+        print(show_all(args, book))
 
-        elif command == "add-birthday":
-            print(add_birthday(args, book))
-            mutating = True
+    elif command == "add-birthday":
+        print(add_birthday(args, book))
+        mutating = True
 
-        elif command == "show-birthday":
-            print(show_birthday(args, book))
+    elif command == "show-birthday":
+        print(show_birthday(args, book))
 
-        elif command == "birthdays":
-            print(birthdays(args, book))
+    elif command == "birthdays":
+        print(birthdays(args, book))
 
-        else:
-            print("Invalid command.")
+    else:
+        print("Invalid command.")
 
-        if mutating:
-            save_data(book)
+    if mutating:
+        save_data(book)
